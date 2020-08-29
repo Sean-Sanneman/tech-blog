@@ -1,4 +1,5 @@
 const router = require("express").Router();
+
 const { Post, Comment, User } = require("../models/index");
 
 // get all posts for mainpage
