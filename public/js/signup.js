@@ -1,23 +1,27 @@
-// signup function. Paste over to login/logout once done.
-const manageSignup = async function (event) {
+async function signupFormHandler(event) {
   event.preventDefault();
-  const pwEl = document.querySelector("#password-input-signup");
-  const userEl = document.querySelector("#username-input-signup");
-  //fetch user/register endpoint
-  fetch("user_routes/register", {
-    method: "post",
-    body: JSON.stringify({
-      username: userEl.value,
-      password: pwEl.value,
-    }),
-    headers: {
-      "content-type": "application/JSON",
-    }
-      .then(function () {
-        document.location.replace("/dashboard");
-      })
-      .catch((err) => console.error(err)),
-  });
-};
 
-document.querySelector("#signup-form").addEventListener("submit", manageSignup);
+  const username = document.querySelector("#username-signup").value.trim();
+  const email = document.querySelector("#email-signup").value.trim();
+  const password = document.querySelector("#password-signup").value.trim();
+
+  if (username && email && password) {
+    const response = await fetch("/api/users", {
+      method: "post",
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    // check the response status
+    if (response.ok) {
+      console.log("success");
+    } else {
+      alert(response.statusText);
+    }
+  }
+}
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);

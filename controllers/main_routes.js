@@ -1,11 +1,11 @@
 const router = require("express").Router();
 
-const { Post, Comment, User } = require("../models/index");
+const { Blogs, Comments, User } = require("../models/index");
 
 // get all posts for mainpage
 
 router.get("/", (req, res) => {
-  Post.findAll({
+  Blogs.findAll({
     include: [User],
   })
     .then((data) => {
@@ -41,11 +41,11 @@ router.get("/login", (req, res) => {
 // get single posts for mainpage
 
 router.get("/post/:id", (req, res) => {
-  Post.findByPk(req.params.id, {
+  Blogs.findByPk(req.params.id, {
     include: [
       User,
       {
-        model: Comment,
+        model: Comments,
         include: [User],
       },
     ],
