@@ -12,14 +12,19 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="container-fluid col-3" id="main">
         <header>
             <h1>
                 <a href="/">Tech Blog</a>
             </h1>
-            <nav>
-                <a href="/login">login</a>
-                <a href="/signup">signup</a>
+            <nav class="navbar">
+                <ul>
+                    <li class="li-inline nav-item"><a href="/">Home</a></li>
+                    <li class="li-inline nav-item"><a href="/dashboard">Dashboard</a></li>
+                    <li class="li-inline nav-item"><a href="/login">Login</a></li>
+                    <li class="li-inline nav-item"><a href="#" id="logout-link">Logout</a></li>
+                    <li class="li-inline nav-item"><a href="/signup">signup</a></li>
+                </ul>
             </nav>
         </header>
         <main>
@@ -43,3 +48,4 @@
 </body>
 
 </html>
+<script src="/public/js/logout.js"></script>
