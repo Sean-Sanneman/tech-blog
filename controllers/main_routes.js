@@ -6,6 +6,7 @@ const { Blogs, Comments, User } = require("../models/index");
 
 router.get("/", (req, res) => {
   Blogs.findAll({
+    attributes: ["blog_id", "blog_name", "blog_text", "created_at"],
     include: [User],
   })
     .then((data) => {

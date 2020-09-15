@@ -6,7 +6,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  Blogs.create(req.body)
+  Blogs.create({
+    blog_name: req.body.blog_name,
+    blog_text: req.body.body,
+  })
     .then((newBlog) => {
       res.json(newBlog);
     })

@@ -19,6 +19,12 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
+router.get("/new", (req, res) => {
+  res.render("new-post", {
+    layout: "dashboard",
+  });
+});
+
 router.get("/edit/:id", (req, res) => {
   Blogs.findOne({
     where: req.params.id,

@@ -1,15 +1,17 @@
 const newFormHandler = async function (event) {
   event.preventDefault();
 
-  const title = document.querySelector('input[name="blog_name"]').value;
-  const body = document.querySelector('textarea[name="blog_text"]').value;
+  const title = document.querySelector("#post-title").value;
+  const body = document.querySelector('textarea[name="post-body"]').value;
+  console.log(title);
+  console.log(body);
 
   const token = localStorage.getItem("token");
-  await fetch(`/api/post`, {
+  const response = await fetch(`/api/blog`, {
     method: "POST",
     body: JSON.stringify({
-      title,
-      body,
+      blog_name: title,
+      body: body,
     }),
     headers: {
       "Content-Type": "application/json",
@@ -17,7 +19,11 @@ const newFormHandler = async function (event) {
     },
   });
 
-  document.location.replace("/dashboard");
+  if (response.ok) {
+    document.location.replace("/");
+  } else {
+    alert("Please add a complete post!");
+  }
 };
 
 document
