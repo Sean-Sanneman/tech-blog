@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const { Blogs, User } = require("../models/");
+const withAuth = require("../utils/auth");
 
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   Blogs.findAll({
     include: [User],
   })
@@ -19,13 +20,13 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.get("/new", (req, res) => {
+router.get("/new", withAuth, (req, res) => {
   res.render("new-post", {
     layout: "dashboard",
   });
 });
 
-router.get("/edit/:id", (req, res) => {
+router.get("/edit/:id", withAuth, (req, res) => {
   Blogs.findByPk(req.params.id)
     .then((response) => {
       const post = response.get({

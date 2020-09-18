@@ -1,14 +1,16 @@
 const router = require("express").Router();
 const { Blogs } = require("../../models/");
+const withAuth = require("../../utils/auth");
 
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   return res.status(200).json({ message: "smoke test" });
 });
 
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Blogs.create({
     blog_name: req.body.blog_name,
     blog_text: req.body.body,
+    userId: req.session.userID,
   })
     .then((newBlog) => {
       res.json(newBlog);
@@ -16,7 +18,7 @@ router.post("/", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", withAuth, (req, res) => {
   Blogs.update(req.body, {
     where: { id: req.params.id },
   })
@@ -26,8 +28,8 @@ router.put("/:id", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.delete("/:id", (req, res) => {
-  Blogs.destroy(req.body, {
+router.delete("/:id", withAuth, (req, res) => {
+  Blogs.destroy({
     where: { id: req.params.id },
   })
     .then((data) => {
