@@ -26,13 +26,12 @@ router.get("/new", (req, res) => {
 });
 
 router.get("/edit/:id", (req, res) => {
-  Blogs.findOne({
-    where: req.params.id,
-  })
+  Blogs.findByPk(req.params.id)
     .then((response) => {
       const post = response.get({
         plain: true,
       });
+      console.log(post);
       res.render("edit-post", {
         layout: "dashboard",
         post,

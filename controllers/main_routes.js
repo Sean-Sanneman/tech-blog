@@ -10,9 +10,9 @@ router.get("/", (req, res) => {
     include: [User],
   })
     .then((data) => {
-      const posts = data.map((post) => {
-        post.get({ plain: true });
-      });
+      const posts = data.map((post) => post.get({ plain: true }));
+      console.log(posts);
+      console.log(data);
       res.render("all-posts", { posts });
     })
     .catch((err) => {
@@ -41,7 +41,7 @@ router.get("/login", (req, res) => {
 
 // get single posts for mainpage
 
-router.get("/post/:id", (req, res) => {
+router.get("/blog/:id", (req, res) => {
   Blogs.findByPk(req.params.id, {
     include: [
       User,
@@ -54,6 +54,8 @@ router.get("/post/:id", (req, res) => {
     .then((data) => {
       if (data) {
         const post = data.get({ plain: true });
+        console.log(post);
+        console.log(data);
         res.render("single-post", { post });
       } else {
         res.status(404).end();

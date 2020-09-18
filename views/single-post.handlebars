@@ -1,13 +1,13 @@
 <article class="post">
     <div class="title">
-        <a href="{{post.post_url}}" target="_blank">{{post.title}}</a>
+        <a href="{{post.post_url}}" target="_blank">{{post.blog_name}}</a>
         <span>({{post.post_url}})</span>
     </div>
     <div class="meta">
-        {{post.vote_count}} point(s) by {{post.user.username}} on
+        {{post.vote_count}} point(s) by {{post.user.user_name}} on
         {{post.created_at}}
         |
-        <a href="/blog/{{post.id}}">{{post.comments.length}} comment(s)</a>
+        <a href="/blog/{{post.blog_id}}">{{post.comments.length}} comment(s)</a>
     </div>
 </article>
 
@@ -26,7 +26,7 @@
     {{#each post.comments}}
     <section class="comment">
         <div class="meta">
-            {{user.username}} on {{created_at}}
+            {{user.user_name}} on {{created_at}}
         </div>
         <div class="text">
             {{comment_text}}
