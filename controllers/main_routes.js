@@ -21,6 +21,22 @@ router.get("/", (req, res) => {
 });
 
 // signup
+router.get("/dashboard", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
+  res.render("dashboard");
+});
+
+//new blog
+router.get("/dashboard/new", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
+  res.render("new-post");
+});
 
 router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {

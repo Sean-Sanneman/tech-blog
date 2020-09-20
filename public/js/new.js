@@ -19,11 +19,11 @@ const newFormHandler = async function (event) {
     },
   });
 
-  if (response.ok) {
-    document.location.replace("/");
-  } else {
-    alert("Please add a complete post!");
-  }
+  //   if (response.ok) {
+  //     document.location.replace("/");
+  //   } else {
+  //     alert("Please add a complete post!");
+  //   }
 };
 
 document

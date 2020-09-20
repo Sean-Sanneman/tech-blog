@@ -6,7 +6,8 @@ router.get("/", withAuth, (req, res) => {
   return res.status(200).json({ message: "smoke test" });
 });
 
-router.post("/", withAuth, (req, res) => {
+router.post("/", (req, res) => {
+  console.log(req.body);
   Blogs.create({
     blog_name: req.body.blog_name,
     blog_text: req.body.body,
