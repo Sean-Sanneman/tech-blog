@@ -19,6 +19,8 @@
   ## Usage
 
   Screenshots:
+  
+  https://github.com/Sean-Sanneman/tech-blog/blob/master/public/assets/images/tech-blog_1.jpg
 
   ## Credits
 
