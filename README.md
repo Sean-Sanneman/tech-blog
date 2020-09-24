@@ -21,6 +21,8 @@
   Screenshots:
   
   https://github.com/Sean-Sanneman/tech-blog/blob/master/public/assets/images/tech-blog_1.jpg
+  
+  https://github.com/Sean-Sanneman/tech-blog/blob/master/public/assets/images/tech-blog_2.jpg
 
   ## Credits
 
